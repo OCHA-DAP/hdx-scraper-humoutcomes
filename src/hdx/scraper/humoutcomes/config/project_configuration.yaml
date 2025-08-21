@@ -1,0 +1,8 @@
+# Collector specific configuration
+base_url: "https://www.aidworkersecurity.org/incidents"
+
+title: "Aid Worker Security Database"
+tags:
+  - aid worker security
+  - aid workers
+  - conflict-violence

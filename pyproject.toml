@@ -1,0 +1,31 @@
+#########################
+# Project Configuration #
+#########################
+
+# Project name and version needed to run tests
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hdx-scraper-humoutcomes"
+requires-python = ">=3.13"
+dependencies = [
+  "hdx-python-api",
+  "hdx-python-country",
+  "hdx-python-utilities",
+  "pandas"
+]
+
+dynamic = ["version"]
+
+[project.optional-dependencies]
+test = [
+  "pytest",
+  "pytest-cov"
+]
+dev = ["pre-commit"]
+
+[project.scripts]
+run = "hdx.scraper.humoutcomes.__main__:main"

@@ -1,0 +1,11 @@
+license_id: cc-by
+methodology: This data was compiled using media reports, incident reports, and by a process of annual verification in which affected and non-affected agencies are contacted to provide data.
+caveats:
+dataset_source: Humanitarian Outcomes
+package_creator: HDX Data Systems Team
+private: False
+maintainer: fdbb8e79-f020-4039-ab3a-9adb482273b8 # erikawei
+owner_org: 9675c871-7b87-4f08-86f8-fd53f7809096
+data_update_frequency: 1
+notes: |
+  This dataset shows aid worker security incidents in (country). Annually, the data for the previous year undergoes a verification process. Data for the current year is provisional. For incident descriptions, please download data directly from [www.aidworkersecurity.org](www.aidworkersecurity.org)
