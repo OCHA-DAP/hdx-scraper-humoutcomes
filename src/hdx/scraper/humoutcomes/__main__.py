@@ -10,6 +10,7 @@ from os.path import expanduser, join
 
 from hdx.api.configuration import Configuration
 from hdx.facades.infer_arguments import facade
+from hdx.location.country import Country
 from hdx.utilities.downloader import Download
 from hdx.utilities.path import (
     script_dir_plus_file,
@@ -60,12 +61,26 @@ def main(
             # Steps to generate dataset
             #
 
-            data = pipeline.get_data()
+            # Get list of HRP countries (and Palestine)
+            countriesdata = Country.countriesdata()
+            countries = []
+            for country in countriesdata["countries"].values():
+                iso3 = country.get("#country+code+v_iso3")
+                if Country.get_hrp_status_from_iso3(iso3) or iso3 == "PSE":
+                    countries.append(
+                        {
+                            "iso2": country.get("#country+code+v_iso2"),
+                            "iso3": iso3,
+                            "name": country.get("#country+name+preferred"),
+                        }
+                    )
 
-            for code, df in data.groupby("Country Code"):
-                df = df.reset_index(drop=True)
-                country_name = df.loc[0, "Country"]
-                dataset = pipeline.generate_dataset(df)
+            # Get data for all countries
+            pipeline.get_data(countries)
+
+            # Create country datasets
+            for country in countries:
+                dataset = pipeline.generate_dataset(country)
                 if dataset:
                     dataset.update_from_yaml(
                         script_dir_plus_file(
@@ -73,9 +88,8 @@ def main(
                         )
                     )
                     dataset["notes"] = dataset["notes"].replace(
-                        "(country)", country_name
+                        "(country)", country.get("name")
                     )
-                    dataset.preview_off()
                     dataset.create_in_hdx(
                         remove_additional_resources=True,
                         match_resource_order=False,
@@ -83,6 +97,25 @@ def main(
                         updated_by_script=_UPDATED_BY_SCRIPT,
                         batch=info["batch"],
                     )
+
+            # Create global dataset
+            global_dataset = pipeline.generate_global_dataset()
+            if global_dataset:
+                global_dataset.update_from_yaml(
+                    script_dir_plus_file(
+                        join("config", "hdx_dataset_static.yaml"), main
+                    )
+                )
+                global_dataset["notes"] = (
+                    "The Aid Worker Security Database (AWSD) records major incidents of violence against aid workers, with incident reports from 1997 through the present. Initiated in 2005, to date the AWSD remains the sole comprehensive global source of these data, providing the evidence base for analysis of the changing security environment for civilian aid operations."
+                )
+                global_dataset.create_in_hdx(
+                    remove_additional_resources=True,
+                    match_resource_order=False,
+                    hxl_update=False,
+                    updated_by_script=_UPDATED_BY_SCRIPT,
+                    batch=info["batch"],
+                )
 
 
 if __name__ == "__main__":
