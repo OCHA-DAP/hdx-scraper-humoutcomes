@@ -33,7 +33,6 @@ class Pipeline:
             "format": "csv",
         }
         data_url = f"{base_url}?{urlencode(params)}"
-
         response = self._retriever.download_file(data_url)
         df = pd.read_csv(response, skiprows=[1]).fillna("")
         df["Date"] = pd.to_datetime(

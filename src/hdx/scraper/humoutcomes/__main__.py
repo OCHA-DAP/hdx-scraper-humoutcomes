@@ -29,7 +29,7 @@ _UPDATED_BY_SCRIPT = "HDX Scraper: Humoutcomes"
 
 
 def main(
-    save: bool = False,
+    save: bool = True,
     use_saved: bool = False,
 ) -> None:
     """Generate datasets and create them in HDX

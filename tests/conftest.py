@@ -35,8 +35,7 @@ def configuration(config_dir):
     Locations.set_validlocations(
         [
             {"name": "afg", "title": "Afghanistan"},
-            {"name": "sdn", "title": "Sudan"},
-            {"name": "world", "title": "World"},
+            # {"name": "world", "title": "World"},
         ]
     )
     Country.countriesdata(False)
@@ -45,9 +44,9 @@ def configuration(config_dir):
             {"name": tag}
             # Change tags below to match those needed in tests
             for tag in (
-                "hxl",
-                "humanitarian needs overview - hno",
-                "people in need - pin",
+                "aid worker security",
+                "aid workers",
+                "conflict-violence",
             )
         ],
         "id": "b891512e-9516-4bf5-962a-7a289772a2a1",
