@@ -1,5 +1,6 @@
 from os.path import join
 
+from hdx.utilities.compare import assert_files_same
 from hdx.utilities.downloader import Download
 from hdx.utilities.path import temp_dir
 from hdx.utilities.retriever import Retrieve
@@ -26,7 +27,7 @@ class TestPipeline:
                 pipeline = Pipeline(configuration, retriever, tempdir)
 
                 countries = [{"iso2": "AF", "iso3": "AFG", "name": "Afghanistan"}]
-                pipeline.get_data(countries)
+                pipeline.get_data()
 
                 dataset = pipeline.generate_dataset(countries[0])
                 dataset.update_from_yaml(
@@ -80,3 +81,8 @@ class TestPipeline:
                         "url_type": "upload",
                     }
                 ]
+                for resource in resources:
+                    filename = resource["name"]
+                    actual = join(tempdir, filename)
+                    expected = join(fixtures_dir, filename)
+                    assert_files_same(actual, expected)

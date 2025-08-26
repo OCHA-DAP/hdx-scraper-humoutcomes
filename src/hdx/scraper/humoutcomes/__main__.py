@@ -29,7 +29,7 @@ _UPDATED_BY_SCRIPT = "HDX Scraper: Humoutcomes"
 
 
 def main(
-    save: bool = True,
+    save: bool = False,
     use_saved: bool = False,
 ) -> None:
     """Generate datasets and create them in HDX
@@ -61,42 +61,44 @@ def main(
             # Steps to generate dataset
             #
 
-            # Get list of HRP countries (and Palestine)
+            # Get list of countries
             countriesdata = Country.countriesdata()
             countries = []
             for country in countriesdata["countries"].values():
                 iso3 = country.get("#country+code+v_iso3")
-                if Country.get_hrp_status_from_iso3(iso3) or iso3 == "PSE":
-                    countries.append(
-                        {
-                            "iso2": country.get("#country+code+v_iso2"),
-                            "iso3": iso3,
-                            "name": country.get("#country+name+preferred"),
-                        }
-                    )
+                countries.append(
+                    {
+                        "isHRP": Country.get_hrp_status_from_iso3(iso3),
+                        "iso2": country.get("#country+code+v_iso2"),
+                        "iso3": iso3,
+                        "name": country.get("#country+name+preferred"),
+                    }
+                )
 
             # Get data for all countries
-            pipeline.get_data(countries)
+            pipeline.get_data()
 
-            # Create country datasets
+            # Create HRP country datasets
             for country in countries:
-                dataset = pipeline.generate_dataset(country)
-                if dataset:
-                    dataset.update_from_yaml(
-                        script_dir_plus_file(
-                            join("config", "hdx_dataset_static.yaml"), main
+                iso3 = country.get("iso3")
+                if Country.get_hrp_status_from_iso3(iso3) or iso3 == "PSE":
+                    dataset = pipeline.generate_dataset(country)
+                    if dataset:
+                        dataset.update_from_yaml(
+                            script_dir_plus_file(
+                                join("config", "hdx_dataset_static.yaml"), main
+                            )
                         )
-                    )
-                    dataset["notes"] = dataset["notes"].replace(
-                        "(country)", country.get("name")
-                    )
-                    dataset.create_in_hdx(
-                        remove_additional_resources=True,
-                        match_resource_order=False,
-                        hxl_update=False,
-                        updated_by_script=_UPDATED_BY_SCRIPT,
-                        batch=info["batch"],
-                    )
+                        dataset["notes"] = dataset["notes"].replace(
+                            "(country)", country.get("name")
+                        )
+                        dataset.create_in_hdx(
+                            remove_additional_resources=True,
+                            match_resource_order=False,
+                            hxl_update=False,
+                            updated_by_script=_UPDATED_BY_SCRIPT,
+                            batch=info["batch"],
+                        )
 
             # Create global dataset
             global_dataset = pipeline.generate_global_dataset()
@@ -121,7 +123,7 @@ def main(
 if __name__ == "__main__":
     facade(
         main,
-        #        hdx_site="dev",
+        hdx_site="demo",
         user_agent_config_yaml=join(expanduser("~"), ".useragents.yaml"),
         user_agent_lookup=_LOOKUP,
         project_config_yaml=script_dir_plus_file(
