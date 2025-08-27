@@ -26,7 +26,7 @@ class TestPipeline:
                 )
                 pipeline = Pipeline(configuration, retriever, tempdir)
 
-                countries = [{"iso2": "CO", "iso3": "COL", "name": "Colombia"}]
+                countries = [{"iso2": "AF", "iso3": "AFG", "name": "Afghanistan"}]
                 pipeline.get_data()
 
                 dataset = pipeline.generate_dataset(countries[0])
@@ -36,8 +36,8 @@ class TestPipeline:
 
                 assert dataset == {
                     "caveats": None,
-                    "name": "aid-worker-security-database-col",
-                    "title": "Colombia - Aid Worker Security Database",
+                    "name": "aid-worker-security-database-afg",
+                    "title": "Afghanistan - Aid Worker Security Database",
                     "dataset_date": "[1997-10-18T00:00:00 TO 2025-05-26T23:59:59]",
                     "dataset_preview": "no_preview",
                     "tags": [
@@ -57,7 +57,7 @@ class TestPipeline:
                     "license_id": "cc-by",
                     "methodology": "This data was compiled using media reports, incident reports, and by a process of annual verification in which affected and non-affected agencies are contacted to provide data.",
                     "dataset_source": "Humanitarian Outcomes",
-                    "groups": [{"name": "col"}],
+                    "groups": [{"name": "afg"}],
                     "package_creator": "HDX Data Systems Team",
                     "private": False,
                     "subnational": "1",
@@ -74,8 +74,8 @@ class TestPipeline:
                 resources = dataset.get_resources()
                 assert resources == [
                     {
-                        "name": "AWSD_CO_security_incidents.csv",
-                        "description": "This dataset shows aid worker security incidents in Colombia.",
+                        "name": "AWSD_AF_security_incidents.csv",
+                        "description": "This dataset shows aid worker security incidents in Afghanistan.",
                         "format": "csv",
                         "resource_type": "file.upload",
                         "url_type": "upload",
