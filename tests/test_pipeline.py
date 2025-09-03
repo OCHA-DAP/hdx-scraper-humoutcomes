@@ -77,8 +77,6 @@ class TestPipeline:
                         "name": "AWSD_AF_security_incidents.csv",
                         "description": "This dataset shows aid worker security incidents in Afghanistan.",
                         "format": "csv",
-                        "resource_type": "file.upload",
-                        "url_type": "upload",
                     }
                 ]
                 for resource in resources:
