@@ -36,7 +36,7 @@ frictionless==5.18.1
     # via hdx-python-utilities
 hdx-python-api==6.6.4
     # via hdx-scraper-humoutcomes (pyproject.toml)
-hdx-python-country==4.0.1
+hdx-python-country==4.1.0
     # via
     #   hdx-scraper-humoutcomes (pyproject.toml)
     #   hdx-python-api

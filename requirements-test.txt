@@ -66,7 +66,7 @@ hdx-python-api==6.6.4
     # via
     #   -c requirements.txt
     #   hdx-scraper-humoutcomes (pyproject.toml)
-hdx-python-country==4.0.1
+hdx-python-country==4.1.0
     # via
     #   -c requirements.txt
     #   hdx-scraper-humoutcomes (pyproject.toml)
