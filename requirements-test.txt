@@ -11,7 +11,7 @@ attrs==25.4.0
     #   jsonlines
     #   jsonschema
     #   referencing
-certifi==2025.10.5
+certifi==2026.1.4
     # via
     #   -c requirements.txt
     #   requests
@@ -23,15 +23,15 @@ charset-normalizer==3.4.4
     # via
     #   -c requirements.txt
     #   requests
-ckanapi==4.8
+ckanapi==4.9
     # via
     #   -c requirements.txt
     #   hdx-python-api
-click==8.3.0
+click==8.3.1
     # via
     #   -c requirements.txt
     #   typer
-coverage==7.11.0
+coverage==7.13.2
     # via pytest-cov
 defopt==7.0.0
     # via
@@ -46,7 +46,7 @@ docopt==0.6.2
     #   -c requirements.txt
     #   ckanapi
     #   num2words
-docutils==0.22.2
+docutils==0.22.4
     # via
     #   -c requirements.txt
     #   defopt
@@ -62,22 +62,22 @@ frictionless==5.18.1
     # via
     #   -c requirements.txt
     #   hdx-python-utilities
-hdx-python-api==6.5.2
+hdx-python-api==6.6.4
     # via
     #   -c requirements.txt
     #   hdx-scraper-humoutcomes (pyproject.toml)
-hdx-python-country==3.9.8
+hdx-python-country==4.0.1
     # via
     #   -c requirements.txt
     #   hdx-scraper-humoutcomes (pyproject.toml)
     #   hdx-python-api
-hdx-python-utilities==3.9.5
+hdx-python-utilities==4.0.4
     # via
     #   -c requirements.txt
     #   hdx-scraper-humoutcomes (pyproject.toml)
     #   hdx-python-api
     #   hdx-python-country
-humanize==4.14.0
+humanize==4.15.0
     # via
     #   -c requirements.txt
     #   frictionless
@@ -112,7 +112,7 @@ jsonpath-ng==1.7.0
     # via
     #   -c requirements.txt
     #   libhxl
-jsonschema==4.25.1
+jsonschema==4.26.0
     # via
     #   -c requirements.txt
     #   frictionless
@@ -124,7 +124,6 @@ jsonschema-specifications==2025.9.1
 libhxl==5.2.2
     # via
     #   -c requirements.txt
-    #   hdx-python-api
     #   hdx-python-country
 loguru==0.7.3
     # via
@@ -138,7 +137,7 @@ markdown-it-py==4.0.0
     # via
     #   -c requirements.txt
     #   rich
-marko==2.2.1
+marko==2.2.2
     # via
     #   -c requirements.txt
     #   frictionless
@@ -158,7 +157,7 @@ num2words==0.5.14
     # via
     #   -c requirements.txt
     #   quantulum3
-numpy==2.3.4
+numpy==2.4.1
     # via
     #   -c requirements.txt
     #   pandas
@@ -166,9 +165,12 @@ openpyxl==3.1.5
     # via
     #   -c requirements.txt
     #   hdx-python-utilities
-packaging==25.0
-    # via pytest
-pandas==2.3.3
+packaging==26.0
+    # via
+    #   -c requirements.txt
+    #   pytest
+    #   wheel
+pandas==3.0.0
     # via
     #   -c requirements.txt
     #   hdx-scraper-humoutcomes (pyproject.toml)
@@ -189,11 +191,11 @@ pockets==0.9.1
     # via
     #   -c requirements.txt
     #   sphinxcontrib-napoleon
-pydantic==2.12.3
+pydantic==2.12.5
     # via
     #   -c requirements.txt
     #   frictionless
-pydantic-core==2.41.4
+pydantic-core==2.41.5
     # via
     #   -c requirements.txt
     #   pydantic
@@ -206,7 +208,7 @@ pyphonetics==0.5.3
     # via
     #   -c requirements.txt
     #   hdx-python-utilities
-pytest==8.4.2
+pytest==9.0.2
     # via
     #   hdx-scraper-humoutcomes (pyproject.toml)
     #   pytest-cov
@@ -228,10 +230,6 @@ python-slugify==8.0.4
     #   -c requirements.txt
     #   ckanapi
     #   frictionless
-pytz==2025.2
-    # via
-    #   -c requirements.txt
-    #   pandas
 pyyaml==6.0.3
     # via
     #   -c requirements.txt
@@ -266,24 +264,20 @@ rfc3986==2.0.0
     # via
     #   -c requirements.txt
     #   frictionless
-rich==14.2.0
+rich==14.3.1
     # via
     #   -c requirements.txt
     #   typer
-rpds-py==0.28.0
+rpds-py==0.30.0
     # via
     #   -c requirements.txt
     #   jsonschema
     #   referencing
-ruamel-yaml==0.18.16
+ruamel-yaml==0.19.1
     # via
     #   -c requirements.txt
     #   hdx-python-utilities
-ruamel-yaml-clib==0.2.14
-    # via
-    #   -c requirements.txt
-    #   ruamel-yaml
-setuptools==80.9.0
+setuptools==80.10.2
     # via
     #   -c requirements.txt
     #   ckanapi
@@ -334,7 +328,7 @@ typeguard==4.4.4
     # via
     #   -c requirements.txt
     #   inflect
-typer==0.20.0
+typer==0.21.1
     # via
     #   -c requirements.txt
     #   frictionless
@@ -342,6 +336,7 @@ typing-extensions==4.15.0
     # via
     #   -c requirements.txt
     #   frictionless
+    #   hdx-python-utilities
     #   pydantic
     #   pydantic-core
     #   typeguard
@@ -351,16 +346,12 @@ typing-inspection==0.4.2
     # via
     #   -c requirements.txt
     #   pydantic
-tzdata==2025.2
-    # via
-    #   -c requirements.txt
-    #   pandas
 unidecode==1.4.0
     # via
     #   -c requirements.txt
     #   libhxl
     #   pyphonetics
-urllib3==2.5.0
+urllib3==2.6.3
     # via
     #   -c requirements.txt
     #   libhxl
@@ -369,7 +360,7 @@ validators==0.35.0
     # via
     #   -c requirements.txt
     #   frictionless
-wheel==0.45.1
+wheel==0.46.3
     # via
     #   -c requirements.txt
     #   libhxl
