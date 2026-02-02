@@ -65,13 +65,13 @@ def main(
             countriesdata = Country.countriesdata()
             countries = []
             for country in countriesdata["countries"].values():
-                iso3 = country.get("#country+code+v_iso3")
+                iso3 = country.get("ISO 3166-1 Alpha 3-Codes")
                 countries.append(
                     {
                         "isHRP": Country.get_hrp_status_from_iso3(iso3),
-                        "iso2": country.get("#country+code+v_iso2"),
+                        "iso2": country.get("ISO 3166-1 Alpha 2-Codes"),
                         "iso3": iso3,
-                        "name": country.get("#country+name+preferred"),
+                        "name": country.get("Preferred Term"),
                     }
                 )
 
