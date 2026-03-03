@@ -95,14 +95,12 @@ class Pipeline:
             "description": resource_description,
         }
 
-        dataset.generate_resource_from_iterable(
-            headers=list(country_df.columns),
-            iterable=country_df.to_dict(orient="records"),
-            hxltags={},
+        dataset.generate_resource(
             folder=self._tempdir,
             filename=resource_name,
+            rows=country_df.to_dict(orient="records"),
             resourcedata=resource,
-            quickcharts=None,
+            headers=list(country_df.columns),
         )
         return dataset
 
@@ -147,14 +145,12 @@ class Pipeline:
             "description": resource_description,
         }
 
-        dataset.generate_resource_from_iterable(
-            headers=list(global_df.columns),
-            iterable=global_df.to_dict(orient="records"),
-            hxltags={},
+        dataset.generate_resource(
             folder=self._tempdir,
             filename=resource_name,
+            rows=global_df.to_dict(orient="records"),
             resourcedata=resource,
-            quickcharts=None,
+            headers=list(global_df.columns),
         )
         return dataset
 
