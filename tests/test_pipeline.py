@@ -61,7 +61,7 @@ class TestPipeline:
                     "package_creator": "HDX Data Systems Team",
                     "private": False,
                     "subnational": "1",
-                    "maintainer": "fdbb8e79-f020-4039-ab3a-9adb482273b8",
+                    "maintainer": "196196be-6037-4488-8b71-d786adf4c081",
                     "owner_org": "9675c871-7b87-4f08-86f8-fd53f7809096",
                     "data_update_frequency": 1,
                     "notes": "This dataset shows aid worker security incidents in (country). "
